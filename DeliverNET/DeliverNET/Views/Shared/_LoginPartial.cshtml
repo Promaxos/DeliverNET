@@ -1,0 +1,86 @@
+@inject SignInManager<DeliverNETUser> SignInManager
+@inject UserManager<DeliverNETUser> UserManager
+@inject DeliverNETClaimManager ClaimManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+
+        @if (await ClaimManager.HasClaim(User, JobTypes.Individual))
+        {
+
+            <li class="nav-item mr-4">
+                <a class="nav-link text-bone" asp-controller="ProfileIndi" asp-action="IndexIndi">
+                    <i class="fas fa-desktop mr-1" style="font-size:medium;font-weight:600"></i>&ensp;Workspace
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-bone" asp-controller="DashboardIndi" asp-action="OverviewIndi">
+                    <i class="fas fa-chart-bar mr-1" style="font-size:large;font-weight:400"></i>&ensp;Dashboard
+                </a>
+            </li>
+
+        }
+        else
+        {
+
+            <li class="nav-item mr-4">
+                <a class="nav-link text-bone" asp-controller="ProfileBusi" asp-action="IndexBusi">
+                    <i class="fas fa-desktop mr-1" style="font-size:medium;font-weight:600"></i>&ensp;Workspace
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-bone" asp-area="" asp-controller="DashboardBusi" asp-action="OverviewBusi">
+                    <i class="fas fa-chart-bar mr-1" style="font-size:large;font-weight:400"></i>&ensp;Dashboard
+                </a>
+            </li>
+
+        }
+
+        <li class="nav-item dropdown text-bone ml-5">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" style="cursor:pointer" aria-haspopup="true" aria-expanded="false">
+                <span class="text-bone">@UserManager.GetUserName(User)</span>
+                <i class="fas fa-user text-bone" id="profileIcon" style="font-size:large"></i>
+            </a>
+            <div class="dropdown-menu bg-jet text-bone mt-1 py-0" aria-labelledby="navbarDropdownMenuLink">
+                @if (await ClaimManager.HasClaim(User, JobTypes.Individual))
+                {
+                    <!--Indi Settings-->
+                    <a class="dropdown-item jet-hov text-bone" asp-controller="ProfileIndi" asp-action="SettingsIndi">Settings</a>
+                }
+                else
+                {
+                    <!--Busi Settings-->
+                    <a class="dropdown-item jet-hov text-bone" asp-controller="ProfileBusi" asp-action="SettingsBusi">Settings</a>
+                }
+
+                <!--Logout Button-->
+                <a class="dropdown-item jet-hov text-bone" asp-controller="Account" asp-action="Logout">Logout</a>
+            </div>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        @*<li class="nav-item">
+                <audio controls="controls">
+                    <source src="~/Last%20Christmas%20(metal%20cover%20by%20Leo%20Moracchioli).mp3" type="audio/mpeg" />
+                </audio>
+            </li>*@
+        <li class="nav-item">
+            <a class="nav-link text-carmine hov-not-carmine text-nowrap border-0" asp-area="" asp-controller="Home" asp-action="AboutIndi">Individuals</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-winter hov-not-winter" asp-controller="Home" asp-action="AboutBusi">Business</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-bone hov-not-bone" asp-controller="Account" asp-action="Login">Login</a>
+        </li>
+        <li class="nav-item mr-sm-auto">
+            <a class="nav-link btn-border-bone hov-not-bone text-bone ml-md-5 ml-sm-0 px-sm-3" asp-controller="Account" asp-action="Register">Register Free</a>
+        </li>
+    </ul>
+}

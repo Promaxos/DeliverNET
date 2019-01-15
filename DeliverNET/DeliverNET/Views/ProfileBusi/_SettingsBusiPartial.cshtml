@@ -1,0 +1,86 @@
+﻿@model DeliverNET.Models.ProfileDummies.BusiIndixDummyModel
+
+@inject UserManager<DeliverNETUser> UserManager
+
+@{
+    DeliverNETUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+}
+
+<div class="container col-md-6">
+
+    <!-- Menus depending on pressed button -->
+    <div class="d-flex justify-content-center">
+
+        <!-- Change Password-->
+        <partial name="_SettingsBusiChangePasswordPartial" />
+
+        <!-- Edit Information Menu -->
+        <div class="bg-jet-3d text-bone mt-5 p-5 settings-menu position-absolute w-75 invisible" style="height:80%" id="menuInfo">
+            <h3>Edit Information</h3>
+            <hr />
+            <form class="text-my-dark" style="width:90%">
+
+                <label><strong>Restaurant Address</strong></label>
+                <input class="form-control mb-3" placeholder="PREVIOUS ADDRESS" />
+                <span class="text-danger"></span>
+
+
+                <label><strong>Area</strong></label>
+                <span class="text-danger"></span>
+                <input class="form-control mb-3" placeholder="PREVIOUS AREA NAME" list="region" />
+                <datalist id="region">
+                    <!-- Connect here IF Statement list depending on City (we need the input above first) -->
+                </datalist>
+
+                <div class="position-relative">
+                    <label><strong>Mobile Phone</strong></label>
+                    <input class="form-control input-with-place  mb-3" placeholder="PREVIOUS PHONE" />
+                    <span class="unit" style="color:#808080">+30&ensp;</span>
+                    <span class="text-danger"></span>
+                </div>
+
+                <label><strong>Email</strong></label>
+                <input class="form-control  mb-3" placeholder="PREVIOUS ADDRESS" />
+                <span class="text-danger"></span>
+
+                <button type="submit" class="btn btn-my-dark mx-auto d-block">Apply</button>
+
+            </form>
+        </div>
+
+        <!-- Add Cashier Menu -->
+        <partial name="_SettingsBusiAddCashierPartial"/>
+
+        <!-- Help Menu -->
+        <div class="bg-jet-3d text-bone mt-5 p-5 settings-menu position-absolute w-75 invisible" style="height:80%" id="menuHelp">
+            <h3>Help Me About:</h3>
+            <hr />
+            <ul style="font-size:23px;font-weight:400">
+
+                <li class="mb-3">
+                    <a>Payment</a>
+                </li>
+
+                <li class="mb-3">
+                    <a>Policy</a>
+                </li>
+
+                <li class="mb-3">
+                    <a>Recommendations</a>
+                </li>
+
+                <li class="mb-3">
+                    <a>Frequently Asked Questions</a>
+                </li>
+
+            </ul>
+        </div>
+
+        @if (!user.EmailConfirmed && User.HasClaim(c => c.Value == "Businessman"))
+        {
+            <!-- Verify Menu for Owner -->
+            <partial name="_SettingsBusiVerifyPartial"/>
+        }
+    </div>
+
+</div>

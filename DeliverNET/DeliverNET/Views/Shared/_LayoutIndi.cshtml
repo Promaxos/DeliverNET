@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "DeliverNET | Delivery Source";
+}
+@inject SignInManager<DeliverNETUser> SignInManager
+@inject UserManager<DeliverNETUser> UserManager
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <environment include="Development">
+        <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=PT+Serif:700" rel="stylesheet">
+        <link href="~/css/site.css" rel="stylesheet">
+        <link href="~/css/OwnCSS.css" rel="stylesheet">
+        <link href="~/css/colors.css" rel="stylesheet">
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/vendor/bootstrap/css/bootstrap.min.css"
+              asp-fallback-href="~/vendor/bootstrap/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/agency.min.css" asp-append-version="true" />
+    </environment>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-jet">
+        <div class="container">
+            <a class="navbar-brand font-pacifico" asp-controller="Home" asp-action="Index">Delivernet</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars text-bone"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <div class="bg-img-carmine" id="bodyDiv">
+        @RenderBody()
+    </div>
+    <!-- Footer -->
+    <footer class="bg-jet text-bone" id="footer">
+        <div class="container py-3">
+            <div class="row">
+                <div class="col-sm-6 text-left">
+                    <span class="copyright">Copyright &copy; Delivernet</span>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <a class="mx-3" href="#">
+                        <i class="fab fa-twitter text-bone"></i>
+                    </a>
+                    <a class="mx-3" href="#">
+                        <i class="fab fa-facebook-f text-bone"></i>
+                    </a>
+                    <a class="mx-3" href="#">
+                        <i class="fab fa-linkedin-in text-bone"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <environment include="Development">
+        <!-- jQuery -->
+        <script src="~/vendor/jquery/jquery.js"></script>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="~/vendor/bootstrap/js/bootstrap.js"></script>
+
+        <!-- Signalr JavaScript-->
+        <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="~/vendor/jquery-easing/jquery.easing.js"></script>
+        
+        <!--Client side validation libraries-->
+        <script src="~/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/vendor/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+        <!--google maps api scripts-->
+        <script defer src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyBsxQgSj5tMe7y7LX6P42cTuKlN37aK2Ec" type="text/javascript"></script>
+
+    </environment>
+    <environment exclude="Development">
+        <script src="~/vendor/jquery/jquery.min.js"
+                asp-fallback-src="~/vendor/jquery/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

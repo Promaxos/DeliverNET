@@ -1,0 +1,38 @@
+﻿@model DeliverNET.Models.ProfileBusiViewModels.SettingsBusiVerifyViewModel
+@using DeliverNET.Models.ProfileBusiViewModels
+
+
+
+<div class="bg-jet-3d text-bone mt-5 p-5 settings-menu position-absolute w-75 invisible" style="height:80%" id="menuVerify">
+    <h3>Verification Form</h3>
+    <hr />
+
+    <!-- TODO Connect the inputs of this form with Db -->
+    <form method="post" class="text-my-dark collapsible p-0" style="height:90%;overflow-y:auto">
+
+        <label asp-for="Title"><strong>Restaurant Name</strong></label>
+        <input asp-for="Title" class="form-control mb-3" placeholder="Restaurant name" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+
+        <label asp-for="City"><strong>City</strong></label>
+        <select asp-for="City" asp-items="Html.GetEnumSelectList<Cities>()" class="form-control mb-3" placeholder="Choose a city"></select>
+        <span asp-validation-for="City" class="text-danger"></span>
+
+        <label asp-for="Area"><strong>Area</strong></label>
+        <select asp-for="Area" asp-items="Html.GetEnumSelectList<Areas>()" class="form-control mb-3" placeholder="Choose an area"></select>
+        <span asp-validation-for="Area" class="text-danger"></span>
+
+        <label asp-for="Address"><strong>Restaurant Address</strong></label>
+        <input asp-for="Address" class="form-control mb-3" placeholder="Address" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+
+        <div class="form-group position-relative mb-3">
+            <label asp-for="PhoneNumber"><strong>Mobile Phone</strong></label>
+            <input asp-for="PhoneNumber" class="form-control input-with-place" />
+            <span class="unit" style="color:#808080">+30&ensp;</span>
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+
+        <button type="submit" asp-controller="ProfileBusi" asp-action="SettingsBusiVerify" class="btn btn-my-dark mx-auto d-block">Send</button>
+    </form>
+</div>

@@ -1,0 +1,56 @@
+﻿@model DeliverNET.Models.HomeViewModels.ContactUsViewModel
+<!-- Contact -->
+<div class="bg-jet parallax-map">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col">
+                <h4 class="text-bone">Contact Us</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-row">
+
+                        <div class="col">
+                            <div class="form-group">
+                                <input asp-for="Name" class="form-control" placeholder="Your Name *">
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <input asp-for="Email" class="form-control" placeholder="Your Email *">
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group mb-0">
+                                <input asp-for="PhoneNumber" class="form-control" placeholder="Your Phone *">
+                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group h-100">
+                                <textarea asp-for="Message" class="form-control h-100" placeholder="Your Message *"></textarea>
+                                <span asp-validation-for="Message" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-row mt-3">
+                        <div class="col">
+                            <div class="form-group">
+                                <button asp-controller="Home" asp-action="ContactUs" type="submit" class="btn btn-border-bone text-jet">Send Message</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>

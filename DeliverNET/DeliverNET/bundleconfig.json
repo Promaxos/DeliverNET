@@ -1,0 +1,14 @@
+[
+  {
+    "outputFileName": "wwwroot/js/AvailabilityStatus.min.js",
+    "inputFiles": [
+      "wwwroot/js/AvailabilityStatus.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/PlaceNewOrder.min.js",
+    "inputFiles": [
+      "wwwroot/js/PlaceNewOrder.js"
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "provider": "unpkg",
+      "library": "@aspnet/signalr@1.0.3",
+      "destination": "wwwroot/signalr/",
+      "files": [
+        "dist/browser/signalr.js",
+        "dist/browser/signalr.min.js"
+      ]
+    },
+    {
+      "library": "Chart.js@2.7.3",
+      "destination": "wwwroot/Chart.js/"
+    },
+    {
+      "library": "moment.js@2.22.2",
+      "destination": "wwwroot/moment.js/"
+    }
+  ]
+}

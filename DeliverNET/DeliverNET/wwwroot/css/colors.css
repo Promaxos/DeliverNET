@@ -1,0 +1,55 @@
+﻿  /*-----------------------*/
+ /*-- Foreground Colors --*/
+/*-----------------------*/
+.text-bone {
+    color: #E0DDC3;
+}
+
+.text-jet {
+    color: #2F332E;
+}
+
+.text-carmine {
+    color: #AA4836;
+}
+
+.text-gray {
+    color: #6A7062;
+}
+
+.text-winter {
+    color: #518282;
+}
+
+  /*-----------------------*/
+ /*-- Background Colors --*/
+/*-----------------------*/
+.bg-carmine {
+    background-color: #AA4836;
+}
+
+.bg-winter {
+    background-color: #518282;
+}
+
+.bg-jet {
+    background-color: #2F332E;
+}
+
+.bg-jet-hover {
+    background-color: #414640;
+}
+
+.bg-gray {
+    background-color: #6A7062;
+}
+
+.bg-bone {
+    color: #E0DDC3;
+}
+
+
+
+
+
+

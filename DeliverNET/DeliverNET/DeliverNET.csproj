@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>aspnet-DeliverNET-E2E0AEF6-CF5B-4F80-838B-AB86306A57CE</UserSecretsId>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Compile Remove="Data\VMs\**" />
+    <Content Remove="Data\VMs\**" />
+    <EmbeddedResource Remove="Data\VMs\**" />
+    <None Remove="Data\VMs\**" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Remove="bundleconfig.json" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="bundleconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Chart.js" Version="2.7.3" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.6" PrivateAssets="All" />
+    <PackageReference Include="Moment.js" Version="2.23.0" />
+    <PackageReference Include="Sendgrid" Version="9.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\ProfileCashier\" />
+  </ItemGroup>
+
+</Project>

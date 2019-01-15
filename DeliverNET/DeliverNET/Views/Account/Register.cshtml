@@ -1,0 +1,119 @@
+﻿@model DeliverNET.Models.AccountViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "DeliverNET | Register";
+}
+
+<div class="container align-items-center">
+    <div class="row align-items-center">
+        <div class="col-md-6 mt-4">
+            <h3>Registration Form</h3>
+            <br />
+            <form class="text-my-dark" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-3">
+                    <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-3">
+                    <input asp-for="DOB" class="form-control" placeholder="Date of birth" />
+                    <span asp-validation-for="DOB" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-3">
+                    <input asp-for="PhoneNumber" class="form-control" placeholder="Phone number" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-3">
+                    <input asp-for="Email" class="form-control" placeholder="Email" />
+                    <span asp-validation-for="Email" class="text-danger "></span>
+                </div>
+                <div class="form-group pt-3">
+                    <input asp-for="Password" class="form-control" placeholder="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-3">
+                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group pt-3">
+                    <input asp-for="JobType" id="jobInput" class="form-control-plaintext" hidden />
+                </div>
+                <div class="form-row justify-content-center">
+                    <button type="submit" class="btn btn-my-dark">Register</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Deliverer Btn -->
+        <div class="col-md-3 text-center">
+            <h2 class="text-jet">Deliverer</h2>
+            <br />
+            <button class="btn bg-carmine-3d hov-carmine-3d circle-big btn-shadow-none text-bone" id="btnIndi">
+                <i class="fas fa-motorcycle" style="font-size: 80px"></i>
+            </button>
+        </div>
+
+        <!-- Business Btn -->
+        <div class="col-md-3" style="text-align: center">
+            <h2 class="text-jet">Businessman</h2>
+            <br />
+            <button name="btnBusi" class="btn bg-winter-3d hov-winter-3d circle-big btn-shadow-none text-bone" id="btnBusi">
+                <i class="fas fa-briefcase" style="font-size: 80px"></i>
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <!-- Background Image -->
+    <script>
+        var back = document.getElementById('bodyDiv');
+        back.classList.remove("bg-img-burger");
+        back.classList.add("bg-img-burger-light");
+    </script>
+
+    <!-- Button animation -->
+    <script>
+        var indiClicked = false;
+        var busiClicked = false;
+        var indi = document.getElementById('btnIndi');
+        var busi = document.getElementById('btnBusi');
+        var input = document.getElementById('jobInput');
+
+        function disableAll() {
+            if (indiClicked) {
+                indi.classList.remove("regiClicked"),
+                    indiClicked = false, input.value = ""
+            };
+            if (busiClicked) {
+                busi.classList.remove("regiClicked"),
+                    busiClicked = false, input.value = ""
+            };
+        };
+
+        indi.onclick = function () {
+            indiClicked ? disableAll() :
+                (disableAll(),
+                    indi.classList.add("regiClicked"),
+                    indiClicked = true,
+                    input.value = "@JobTypes.Individual.ToString()");
+        };
+
+        busi.onclick = function () {
+            busiClicked ? disableAll() :
+                (disableAll(),
+                    busi.classList.add("regiClicked"),
+                    busiClicked = true,
+                    input.value = "@JobTypes.Businessman.ToString()");
+        };
+    </script>
+}
+

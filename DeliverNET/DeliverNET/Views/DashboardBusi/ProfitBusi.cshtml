@@ -1,0 +1,93 @@
+﻿@model DeliverNET.Models.ProfileDummies.BusiDashboardDummyModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<div class="container" style="height:100vh">
+    <div class="text-bone border-bottom mt-2 ml-4 pb-3">
+        <h1 style="font-weight:300">
+            Profit Per Month (€)
+        </h1>
+    </div>
+
+
+    <div class="container mt-4">
+        <canvas id="myChart" class="h-100 w-100"></canvas>
+
+    </div>
+
+</div>
+
+
+@section Scripts{
+
+    <script>
+
+        var January = [200, 80, 90, 110, 50, 130, 290];
+        var February = [300, 110, 190, 140, 150, 140, 410];
+        var March = [120, 50, 220, 310, 250, 140, 160];
+        var April = [200, 180, 140, 110, 200, 310, 330];
+
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    label: 'January',
+                    data: January,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)'
+                    ],
+                    borderWidth: 1
+                }, {
+                    label: 'February',
+                    data: February,
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }
+                    , {
+                    label: 'March',
+                    data: March,
+                    backgroundColor: [
+                        'rgba(255, 206, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 206, 86, 1)'
+                    ],
+                    borderWidth: 1
+                }, {
+                    label: 'April',
+                    data: April,
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+    </script>
+
+}

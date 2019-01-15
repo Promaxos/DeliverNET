@@ -1,0 +1,268 @@
+﻿.btn-my-dark {
+    background-color: #2F332E;
+    color: #E0DDC3;
+    border: solid;
+    border-color: transparent;
+    border-width: 1px;
+    padding: 5px;
+}
+
+.btn-nav-border {
+    background-color: transparent;
+    border: solid;
+    border-color: #E0DDC3;
+    border-width: 1px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.btn-nav-border-circ {
+    background-color: transparent;
+    border: solid;
+    border-color: #E0DDC3;
+    border-width: 1px;
+    padding: 5px;
+    border-radius: 30px;
+}
+
+.hov-carmine:hover {
+    background-color: #AA5242;
+}
+
+.hov-winter:hover {
+    background-color: #588E8E;
+}
+
+.hov-dark:hover {
+    background-color: #3C423B;
+}
+
+.hov-not-bone:hover {
+    color: #EDEAD3;
+    text-decoration: none;
+}
+
+.hov-not-carmine:hover {
+    color: #AA5242;
+    text-decoration: none;
+}
+
+.hov-not-winter:hover {
+    color: #588E8E;
+    text-decoration: none;
+}
+
+.nav-padding {
+    padding-top: 50px;
+}
+
+.circle {
+    width: 85px;
+    height: 85px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 225px;
+}
+
+.circle-big {
+    width: 135px;
+    height: 135px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 225px;
+}
+
+.square {
+    color: #E0DDC3;
+    display: block;
+    border-radius: 4px;
+    height: 30%;
+    width: 40vh;
+    margin: 0;
+}
+
+.regiClicked {
+    border-color: #E0DDC3;
+    border-width: thin;
+}
+
+.btn-shadow-none:focus {
+    box-shadow: none;
+}
+
+.bike-carmine {
+    content: url(/img/bike-carmine.jpg);
+    height: 100%;
+}
+
+.bike-carmine-rev {
+    content: url(/img/bike-carmine.jpg);
+    transform: scaleX(-1);
+    height: 100%;
+}
+
+.bike-winter {
+    content: url(/img/bike-winter.jpg);
+    height: 100%;
+}
+
+.bike-winter-rev {
+    content: url(/img/bike-winter.jpg);
+    transform: scaleX(-1);
+    height: 100%;
+}
+
+.table-standard {
+    height: 100%;
+    width: 100%;
+    color: #E0DDC3;
+    border: solid;
+    box-shadow: 0 0 0 1px hsl(0, 0%, 80%), 0 0 0 1px hsl(0, 0%, 90%);
+}
+
+.table-inputs {
+    border-bottom: 1px solid #2F332E;
+    height: 10%;
+}
+
+.btn-unavailable {
+    display: block;
+    border-radius: 50%;
+    height: 230px;
+    width: 230px;
+    margin: 0;
+    background: radial-gradient(circle at 100px 100px, #AA4836, #000);
+}
+
+    .btn-unavailable:active {
+        background: radial-gradient(circle at 100px 100px, maroon, #000);
+    }
+
+.btn-available {
+    display: block;
+    border-radius: 50%;
+    height: 230px;
+    width: 230px;
+    margin: 0;
+    background: radial-gradient(circle at 100px 100px, #72AF64, #000);
+}
+
+    .btn-available:active {
+        background: radial-gradient(circle at 100px 100px, #32512b, #000);
+    }
+
+.collapsible {
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    outline: none;
+}
+
+.collapse-content {
+    padding: 0 18px;
+    color: #E0DDC3;
+    background-color: #2F332E;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.unit {
+    position: absolute;
+    display: block;
+    left: 10px;
+    top: 39px;
+    z-index: 9;
+}
+
+.input-with-place {
+    display: block;
+    padding-left: 50px;
+}
+
+.btn-dead {
+    pointer-events: none;
+    height: 47px;
+}
+
+
+.jet-hov:hover {
+    background-color: #414640;
+    color: #E0DDC3;
+}
+
+.bg-dashboard {
+    background-color: #2f3a3b;
+}
+
+.bg-carmine-3d {
+    background: radial-gradient(circle at 100px 100px, #AA4836, #3a1b16);
+}
+
+.bg-bone-3d {
+    background: radial-gradient(circle at 100px 100px, #eae7cd, #e6e4d6);
+}
+
+.bg-bone-light-3d {
+    background: radial-gradient(circle at 100px 100px, #faf9e9, #fbf8e4);
+}
+
+.bg-carmine-3d-square {
+    background: radial-gradient(circle at 250px 300px, #b95745, #6f352a);
+}
+
+.bg-carmine-3d-hover {
+    background: radial-gradient(circle at 100px 100px, #AA5242, #3c231f);
+}
+
+.hov-carmine-3d:hover {
+    background: radial-gradient(circle at 100px 100px, #AA5242, #3c231f);
+}
+
+.bg-winter-3d {
+    background: radial-gradient(circle at 100px 100px, #629696, #2c3c3c);
+}
+
+.bg-jet-3d {
+    background: linear-gradient(to right, #474e46, #2F332E);
+}
+
+.bg-jet-3d-hov {
+    background: linear-gradient(to right, #4f564e, #3c413b);
+}
+
+.bg-jet-green-3d {
+    background: radial-gradient(circle at 50px 100px, #3c4d39, #1f2c1c);
+}
+
+.bg-jet-green-3d-hov {
+    background: radial-gradient(circle at 50px 100px, #43563f, #273723);
+}
+
+.bg-winter-3d-square {
+    background: radial-gradient(circle at 250px 300px, #79a9a9, #4b5d5d);
+}
+
+.bg-winter-3d-hover {
+    background: radial-gradient(circle at 100px 100px, #79a9a9, #384646);
+}
+
+.hov-winter-3d:hover {
+    background: radial-gradient(circle at 100px 100px, #79a9a9, #384646);
+}
+
+.div-image-parch {
+    background-image: url("/img/parchment.jpg");
+}
+
+.complete-center {
+    column-fill: balance;
+    transform: translateY(15%);
+}
+
+.settings-menu {
+    color: #2F332E;
+    border: solid;
+    border-width: 1px;
+    border-radius: 2px;
+    border-color: #E0DDC3;
+}

@@ -1,0 +1,64 @@
+﻿@model DeliverNET.Models.ProfileDummies.BusiDashboardDummyModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<div class="container" style="height:100vh">
+    <div class="text-bone border-bottom mt-2 ml-4 pb-3">
+        <h1 style="font-weight:300">
+            Overview
+        </h1>
+    </div>
+
+    <div class="row d-flex h-75 justify-content-around">
+
+        <div class="d-flex flex-column justify-content-around">
+
+            <div class="container pt-2 square" style="background-color:#46a079">
+                <div style="font-size:small">
+                    Expenses Saved:
+                    <h3 class="pt-1">@Model.expensesSaved €</h3>
+                    <hr />
+                </div>
+
+            </div>
+
+            <div class="container pt-2 square" style="background-color:#a35e38">
+                <div style="font-size:small">
+                    Total Orders :
+                    <h3 class="pt-1">@Model.totalOrders</h3>
+                    <hr />
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="d-flex flex-column justify-content-around">
+
+            <div class="container pt-2 square" style="background-color:#896490">
+                <div style="font-size:small">
+                    Order Success Rate:
+                    <h3 class="pt-1">@(Math.Round((float)(Model.totalOrdersSucceeded*100 / Model.totalOrders), 2)) % </h3>
+                    <hr />
+
+                </div>
+            </div>
+
+            <div class="container pt-2 square" style="background-color:#a09a46">
+                <div style="font-size:small">
+                    Total Income :
+                    <h3 class="pt-1">@Model.totalIncome €</h3>
+                    <hr />
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

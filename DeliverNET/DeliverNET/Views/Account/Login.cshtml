@@ -1,0 +1,67 @@
+﻿@model DeliverNET.Models.AccountViewModels.LoginViewModel
+
+@using System.Collections.Generic
+@using Microsoft.AspNetCore.Authentication
+
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    ViewData["Title"] = "Log in";
+    var authSchemes = (List<AuthenticationScheme>)ViewData["ExternalLogins"];
+}
+
+<div class="login-box bg-jet p-3">
+    <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+        <h3 class="text-bone text-center mb-3">Login</h3>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <input asp-for="Email" class="form-control" placeholder="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="Password" class="form-control" placeholder="Password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-check">
+            <label asp-for="RememberMe" class="text-bone">
+                <input type="checkbox" asp-for="RememberMe" />
+                @Html.DisplayNameFor(m => m.RememberMe)
+            </label>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn text-jet">Log in</button>
+        </div>
+        <div class="form-group text-bone">
+            <p>
+                <a class="text-bone">Forgot your password?</a>
+            </p>
+            <p>
+                <a asp-action="Register" asp-route-returnUrl="@ViewData["ReturnUrl"]" class="text-bone">Register as a new user</a>
+            </p>
+        </div>
+    </form>
+
+    @{
+        if ((authSchemes?.Count ?? 0) != 0)
+        {
+            <form class="form-inline" asp-action="ExternalLogin" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                <div class="form-group">
+                    <p class="text-bone">Login using</p>
+                    @foreach (var provider in authSchemes)
+                    {
+                        <button type="submit" class="btn bg-transparent mx-auto" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">
+                            <span>
+                                <i class="fab fa-facebook-square" style="font-size:30px; color: #3b5998"></i>
+                            </span>
+                        </button>
+                    }
+                </div>
+            </form>
+        }
+    }
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

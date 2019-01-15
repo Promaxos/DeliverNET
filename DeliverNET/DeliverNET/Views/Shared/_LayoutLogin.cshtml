@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "DeliverNET | Delivery Source";
+}
+@inject SignInManager<DeliverNETUser> SignInManager
+@inject UserManager<DeliverNETUser> UserManager
+@inject DeliverNETClaimManager ClaimManager
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=PT+Serif:700" rel="stylesheet">
+        
+        <link href="~/css/layout_login.css" rel="stylesheet" />
+        <link href="~/css/site.css" rel="stylesheet">
+        <link href="~/css/colors.css" rel="stylesheet">
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/vendor/bootstrap/css/bootstrap.min.css"
+              asp-fallback-href="~/vendor/bootstrap/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/agency.min.css" asp-append-version="true" />
+    </environment>
+</head>
+
+
+
+<body>
+
+    <div class="bg-img-bistro"></div>
+    <div>
+        @RenderBody()
+    </div>
+
+
+    <environment include="Development">
+
+        <!-- jQuery -->
+        <script src="~/vendor/jquery/jquery.min.js"></script>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <!-- Signalr JavaScript-->
+        <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+
+        <!-- Plugin JavaScript -->
+        <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+        <!--Client side validation libraries-->
+        <script src="~/vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+        <script src="~/vendor/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    </environment>
+    <environment exclude="Development">
+        <script src="~/vendor/jquery/jquery.min.js"
+                asp-fallback-src="~/vendor/jquery/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+    </environment>
+
+
+
+
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

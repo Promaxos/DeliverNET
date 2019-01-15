@@ -1,0 +1,264 @@
+﻿@model DeliverNET.Models.ProfileDummies.IndiIndixDummyModel
+
+@{
+    ViewData["Title"] = "Profile Settings";
+    Layout = "~/Views/Shared/_LayoutIndi.cshtml";
+}
+
+<div class="container p-4">
+
+    <div class="row">
+
+        <!-- Options -->
+        <div class="col-md-6">
+
+            <div class="d-flex flex-column justify-content-around" style="height:100vh">
+
+                <!-- Profile Settings btn -->
+                <a class="d-flex align-items-center justify-content-start" id="btnSett">
+
+                    <div class="btn bg-jet-3d circle text-bone align-items-center d-flex" id="circleSett">
+                        <i class="fas fa-user-edit m-auto" style="font-size: 33px"></i>
+                    </div>
+
+                    <div class="btn col-md-5 bg-jet-3d text-bone py-1"
+                         style="border-radius:20px;font-size:25px;" id="labSett">
+                        Profile Settings
+                    </div>
+
+                </a>
+
+                <!-- Edit Information btn -->
+                <a class="d-flex align-items-center justify-content-start" id="btnInfo">
+
+                    <div class="btn bg-jet-3d circle text-bone align-items-center d-flex" id="circleInfo">
+                        <i class="fas fa-unlock-alt m-auto" style="font-size: 33px"></i>
+                    </div>
+
+                    <div class="btn col-md-5 bg-jet-3d text-bone py-1"
+                         style="border-radius:20px;font-size:25px;" id="labInfo">
+                        Edit Info
+                    </div>
+
+                </a>
+
+                <!-- Help btn -->
+                <a class="d-flex align-items-center justify-content-start" id="btnHelp">
+
+                    <div class="btn bg-jet-3d circle text-bone align-items-center d-flex" id="circleHelp">
+                        <i class="fas fa-question m-auto" style="font-size: 33px"></i>
+                    </div>
+
+                    <div class="btn col-md-5 bg-jet-3d text-bone py-1"
+                         style="border-radius:20px;font-size:25px;" id="labHelp">
+                        Help
+                    </div>
+
+                </a>
+
+                <!-- Verify btn -->
+                @if (!Model.IsVerified)
+                {
+                    <a class="d-flex align-items-center justify-content-start" id="btnVerify">
+
+                        <div class="btn bg-jet-green-3d circle text-bone align-items-center d-flex" style="text-align:center" id="circleVerify">
+                            <i class="fas fa-address-card m-auto" style="font-size: 33px"></i>
+                        </div>
+
+                        <div class="btn col-md-5 bg-jet-green-3d text-bone py-1"
+                             style="border-radius:20px;font-size:25px;" id="labVerify">
+                            Verify
+                        </div>
+                    </a>
+                }
+                else
+                {
+                    <div></div>
+                }
+
+                <div></div>
+                <div></div>
+
+
+
+            </div>
+
+        </div>
+
+        <!-- Menus -->
+        <partial name="_SettingsIndiPartial" />
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+
+    <script>
+
+        var settClicked = false;
+        var infoClicked = false;
+        var cashClicked = false;
+        var helpClicked = false;
+        var verifyClicked = false;
+
+        var sett = document.getElementById('btnSett');
+        var info = document.getElementById('btnInfo');
+        var cash = document.getElementById('btnCashier');
+        var help = document.getElementById('btnHelp');
+        var verify = document.getElementById('btnVerify');
+
+        var settCircle = document.getElementById('circleSett');
+        var infoCircle = document.getElementById('circleInfo');
+        var cashCircle = document.getElementById('circleCashier');
+        var helpCircle = document.getElementById('circleHelp');
+        var verifyCircle = document.getElementById('circleVerify');
+
+        var settLab = document.getElementById('labSett');
+        var infoLab = document.getElementById('labInfo');
+        var cashLab = document.getElementById('labCashier');
+        var helpLab = document.getElementById('labHelp');
+        var verifyLab = document.getElementById('labVerify');
+
+        var settMenu = document.getElementById('menuSett');
+        var infoMenu = document.getElementById('menuInfo');
+        var cashMenu = document.getElementById('menuCashier');
+        var helpMenu = document.getElementById('menuHelp');
+        var verifyMenu = document.getElementById('menuVerify');
+
+
+        sett.onmouseover = function () {
+            settLab.classList.add("bg-jet-3d-hov");
+            settCircle.classList.add("bg-jet-3d-hov");
+        };
+
+        sett.onmouseout = function () {
+            settLab.classList.remove("bg-jet-3d-hov");
+            settCircle.classList.remove("bg-jet-3d-hov");
+        };
+
+        info.onmouseover = function () {
+            infoLab.classList.add("bg-jet-3d-hov");
+            infoCircle.classList.add("bg-jet-3d-hov");
+        };
+
+        info.onmouseout = function () {
+            infoLab.classList.remove("bg-jet-3d-hov");
+            infoCircle.classList.remove("bg-jet-3d-hov");
+        };
+
+        help.onmouseover = function () {
+            helpLab.classList.add("bg-jet-3d-hov");
+            helpCircle.classList.add("bg-jet-3d-hov");
+        };
+
+        help.onmouseout = function () {
+            helpLab.classList.remove("bg-jet-3d-hov");
+            helpCircle.classList.remove("bg-jet-3d-hov");
+        };
+
+        function disableAll() {
+
+            if (settClicked) {
+                settCircle.classList.remove("regiClicked"),
+                    settLab.classList.remove("regiClicked"),
+                    settMenu.classList.add("invisible"),
+                    settClicked = false
+            };
+            if (infoClicked) {
+                infoCircle.classList.remove("regiClicked"),
+                    infoLab.classList.remove("regiClicked"),
+                    infoMenu.classList.add("invisible"),
+                    infoClicked = false
+            };
+            if (cashClicked) {
+                cashCircle.classList.remove("regiClicked"),
+                    cashLab.classList.remove("regiClicked"),
+                    cashMenu.classList.add("invisible"),
+                    cashClicked = false
+            };
+            if (helpClicked) {
+                helpCircle.classList.remove("regiClicked"),
+                    helpLab.classList.remove("regiClicked"),
+                    helpMenu.classList.add("invisible"),
+                    helpClicked = false
+            };
+            if (verifyClicked) {
+                verifyCircle.classList.remove("regiClicked"),
+                    verifyLab.classList.remove("regiClicked"),
+                    verifyMenu.classList.add("invisible"),
+                    verifyClicked = false
+            };
+        };
+
+        sett.onclick = function () {
+            settClicked ? disableAll() :
+                (disableAll(),
+                    settCircle.classList.add("regiClicked"),
+                    settLab.classList.add("regiClicked"),
+                    settMenu.classList.remove("invisible"),
+                    settClicked = true);
+        };
+
+        info.onclick = function () {
+            infoClicked ? disableAll() :
+                (disableAll(),
+                    infoCircle.classList.add("regiClicked"),
+                    infoLab.classList.add("regiClicked"),
+                    infoMenu.classList.remove("invisible"),
+                    infoClicked = true);
+        };
+
+        help.onclick = function () {
+            helpClicked ? disableAll() :
+                (disableAll(),
+                    helpCircle.classList.add("regiClicked"),
+                    helpLab.classList.add("regiClicked"),
+                    helpMenu.classList.remove("invisible"),
+                    helpClicked = true);
+        };
+
+    </script>
+
+    @if (!Model.IsVerified)
+    {
+        <script>
+
+            var verifyClicked = false;
+            var verify = document.getElementById('btnVerify');
+            var verifyCircle = document.getElementById('circleVerify');
+            var verifyLab = document.getElementById('labVerify');
+            var verifyMenu = document.getElementById('menuVerify');
+
+            verify.onmouseover = function () {
+                verifyLab.classList.add("bg-jet-green-3d-hov");
+                verifyCircle.classList.add("bg-jet-green-3d-hov");
+            };
+
+            verify.onmouseout = function () {
+                verifyLab.classList.remove("bg-jet-green-3d-hov");
+                verifyCircle.classList.remove("bg-jet-green-3d-hov");
+            };
+
+            if (verifyClicked) {
+                verifyCircle.classList.remove("regiClicked"),
+                    verifyLab.classList.remove("regiClicked"),
+                    verifyMenu.classList.add("invisible"),
+                    verifyClicked = false
+            };
+
+            verify.onclick = function () {
+                verifyClicked ? disableAll() :
+                    (disableAll(),
+                        verifyCircle.classList.add("regiClicked"),
+                        verifyLab.classList.add("regiClicked"),
+                        verifyMenu.classList.remove("invisible"),
+                        verifyClicked = true);
+            };
+
+
+
+        </script>
+    }
+}

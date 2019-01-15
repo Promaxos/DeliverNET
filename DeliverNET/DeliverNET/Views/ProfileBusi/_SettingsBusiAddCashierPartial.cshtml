@@ -1,0 +1,44 @@
+﻿@model DeliverNET.Models.AccountViewModels.RegisterViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<div id="menuCashier" class="bg-jet-3d text-bone mt-5 p-5 settings-menu position-absolute w-75 invisible" style="height:80%">
+    <h3>Add Cashier</h3>
+    <hr />
+    <form method="post" class="text-my-dark" style="width:90%">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <input asp-for="FirstName" class="form-control" placeholder="First Name" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group pt-3">
+            <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group pt-3">
+            <input asp-for="DOB" class="form-control" placeholder="Date of birth" />
+            <span asp-validation-for="DOB" class="text-danger"></span>
+        </div>
+        <div class="form-group pt-3">
+            <input asp-for="PhoneNumber" class="form-control" placeholder="Phone number" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group pt-3">
+            <input asp-for="Email" class="form-control" placeholder="Email" />
+            <span asp-validation-for="Email" class="text-danger "></span>
+        </div>
+        <div class="form-group pt-3">
+            <input asp-for="Password" class="form-control" placeholder="Password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group pt-3">
+            <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <div class="form-row justify-content-center">
+            <button type="submit" asp-controller="ProfileBusi" asp-action="SettingsAddCashier" class="btn btn-my-dark">Register</button>
+        </div>
+    </form>
+</div>

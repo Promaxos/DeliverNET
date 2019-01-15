@@ -1,0 +1,216 @@
+﻿@model DeliverNET.Models.ProfileDummies.IndiDashboardDummyModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+
+<div class="container h-100">
+    <div class="h-50 w-100">
+
+        <div class="text-bone border-bottom mt-2 ml-4 pb-3">
+            <h1 style="font-weight:300">
+                Orders Per Day of Week
+            </h1>
+            <button class="text-bone bg-carmine-3d" id="viewBtn">
+                Bar View
+            </button>
+        </div>
+
+        <div class="container">
+            <div class="container mt-4 position-absolute" id="divPie">
+                <canvas id="myChart1" class="h-100 w-100"></canvas>
+            </div>
+
+            <div class="container mt-4 position-absolute invisible" id="divBar">
+                <canvas id="myChart2" class="h-100 w-100"></canvas>
+            </div>
+
+            <div class="container mt-4 invisible">
+                <canvas id="myChart2" class="h-100 w-100"></canvas>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="h-50 w-100 mt-5 pb-5">
+        <div class="text-bone border-bottom mt-2 ml-4 pb-3">
+            <h1 style="font-weight:300">
+                Order Progression
+            </h1>
+        </div>
+        <div class="container mt-4">
+            <canvas id="myChart3" class="h-50 w-100"></canvas>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+@section Scripts{
+
+    <!-- View Button -->
+    <script>
+
+        var clicked = false;
+        var viewBtn = document.getElementById('viewBtn');
+        var divPie = document.getElementById('divPie');
+        var divBar = document.getElementById('divBar');
+
+        var barHtml = 'Bar View';
+        var pieHtml = 'Pie View';
+
+        viewBtn.onclick = function () {
+            clicked ? (viewBtn.innerHTML = barHtml,
+                divPie.classList.remove("invisible"),
+                divBar.classList.add("invisible"),
+                clicked = false) :
+                (viewBtn.innerHTML = pieHtml,
+                    divPie.classList.add("invisible"),
+                    divBar.classList.remove("invisible"),
+                    clicked = true);
+        }; 
+
+
+
+    </script>
+
+    <!-- Bar Chart -->
+    <script>
+        var ctx = document.getElementById("myChart2");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    label: ["Best Day: Sunday"],
+                    data: [@Model.ordersCounterPerDayType[0], @Model.ordersCounterPerDayType[1], @Model.ordersCounterPerDayType[2],
+                        @Model.ordersCounterPerDayType[3], @Model.ordersCounterPerDayType[4], @Model.ordersCounterPerDayType[5],
+                    @Model.ordersCounterPerDayType[6]],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 247, 149, 0.2)',
+                        'rgba(91, 195, 103, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(195, 159, 64, 0.2)',
+                        'rgba(156, 240, 238, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(77, 167, 87, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 119, 64, 1)',
+                        'rgba(131, 199, 198, 1)'
+
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+    <!-- Pie Chart -->
+    <script>
+        var ctx = document.getElementById("myChart1");
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                datasets: [{
+                    data: [@Model.ordersCounterPerDayType[0], @Model.ordersCounterPerDayType[1], @Model.ordersCounterPerDayType[2],
+                        @Model.ordersCounterPerDayType[3], @Model.ordersCounterPerDayType[4], @Model.ordersCounterPerDayType[5],
+                    @Model.ordersCounterPerDayType[6]],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 247, 149, 0.2)',
+                        'rgba(91, 195, 103, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(195, 159, 64, 0.2)',
+                        'rgba(156, 240, 238, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(77, 167, 87, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 119, 64, 1)',
+                        'rgba(131, 199, 198, 1)'
+
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+    <!--  Line Chart -->
+    <script>
+
+        var numOfDays = @Model.ordersCounterPerDayActive.Length;
+
+        // This is a Dummy
+        var orders = [2, 5, 3, 10, 4, 3, 6, 5, 2, 15, 14, 6, 5];
+        var ordersBetter = [];
+
+
+        var spacies = [];
+
+        for (let i = 0; i < numOfDays; i++) {
+            spacies.push("");
+            ordersBetter.push(orders[i]*1.15)
+        }
+
+        var ctx = document.getElementById("myChart3");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: spacies,
+                datasets: [{
+                    label: 'Orders per Day',
+                    data: orders,
+                    backgroundColor: [
+                        'rgba(175, 99, 132, 0.5)'],
+                    borderColor: [
+                        'rgba(195, 99, 132, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+}

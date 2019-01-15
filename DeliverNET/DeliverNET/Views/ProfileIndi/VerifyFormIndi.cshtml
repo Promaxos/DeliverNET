@@ -1,0 +1,39 @@
+﻿@model DeliverNET.Models.ProfileIndiViewModels.VerifyFormIndiViewModel
+@using DeliverNET.Models.ProfileIndiViewModels
+
+@{
+    ViewData["Title"] = "Verify Account";
+    Layout = "~/Views/Shared/_LayoutIndi.cshtml";
+}
+
+<div class="row nav-padding px-5 pb-5">
+    <div class="container align-items-center">
+        <div class="row align-items-center">
+            <div class="col-md-4">
+                <h3>Verification Form</h3>
+                <br />
+                <!-- TODO :: Connect the inputs of this form with Db -->
+                <form class="text-my-dark" method="post">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="form-group">
+                        <label asp-for="OperationalCity">City</label>
+                        <select asp-for="OperationalCity" asp-items="Html.GetEnumSelectList<OperationalCities>()" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OperationalRegion">Region</label>
+                        <select asp-for="OperationalRegion" asp-items="Html.GetEnumSelectList<OperationRegions>()" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Credentials"></label>
+                        <input asp-for="Credentials" type="text" class="form-control"/>
+                        <span asp-validation-for="Credentials" class="text-danger"></span>
+                    </div>
+
+                    <button asp-controller="ProfileIndi" asp-action="VerifyFormIndi" type="submit" class="btn btn-my-dark">Apply</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>>
